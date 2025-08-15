@@ -28,5 +28,23 @@ public abstract class Account  {
     public double getBalance() {
         return balance;
     }
+    public void deposit(double amount) {
+        if (amount <= 0) {
+            throw new IllegalArgumentException("Deposit cannot be negative");
+        }
+        balance += amount;
+    }
+
+    public void withdraw(double amount) {
+        if (amount <= 0) {
+            throw new IllegalArgumentException("Withdraw cannot be negative");
+        }
+        balance -= amount;
+    }
+    public abstract String type();
+
+    public String details() {
+        return String.format("[%s] %s | Owner=%s | Balance: %.2f", id, type(), owner, balance);
+    }
 
 }
